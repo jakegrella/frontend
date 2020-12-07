@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // import '../styles/header.css';
 
-const initialValue = false;
-
 const Header = (props) => {
-	const { userInfo } = props;
-
 	const { push } = useHistory();
 
 	console.log('token', localStorage.getItem('token'));
@@ -31,7 +27,7 @@ const Header = (props) => {
 						sign up
 					</Link>
 				</nav>
-				<style jsx>{`
+				<style jsx='true'>{`
 					header {
 						display: flex;
 						flex-flow: row nowrap;
