@@ -21,20 +21,20 @@ const EditForm = (props) => {
 	// const [itemList, setItemList] = useState([])
 	// const [guestList, setGuestList] = useState([])
 
-	const fetchEvent = (id) => {
-		axiosWithAuth()
-			.get(`/events/${id}`)
-			.then((res) => {
-				console.log(res);
-				console.log(id);
-				setEvent(res.data[0]);
-				setItemList(res.data[0].items.split(', '));
-				setGuestList(res.data[0].guests.split(', '));
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
+	// const fetchEvent = (id) => {
+	// 	axiosWithAuth()
+	// 		.get(`/events/${id}`)
+	// 		.then((res) => {
+	// 			console.log(res);
+	// 			console.log(id);
+	// 			setEvent(res.data[0]);
+	// 			setItemList(res.data[0].items.split(', '));
+	// 			setGuestList(res.data[0].guests.split(', '));
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
+	// };
 
 	useEffect(() => {
 		fetchEvent(id);
