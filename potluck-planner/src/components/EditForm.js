@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
@@ -36,11 +36,11 @@ const EditForm = (props) => {
 	// 		});
 	// };
 
-	useEffect(() => {
-		fetchEvent(id);
-		// this comment will remove warning about empty array
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	// useEffect(() => {
+	// 	fetchEvent(id);
+	// 	// this comment will remove warning about empty array
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, []);
 
 	const handleChange = (e) => {
 		e.persist();
