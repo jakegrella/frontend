@@ -46,6 +46,8 @@ const Dashboard = (props) => {
 	useEffect(() => {
 		getUserInfo();
 		getEvents();
+		// this comment will remove warning about empty array
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -66,9 +68,6 @@ const Dashboard = (props) => {
 					<h2>Invitations</h2>
 					{events
 						.filter((ev) => {
-							{
-								/* console.log(userInfo) */
-							}
 							return ev.guests.split(', ').includes(userInfo.username);
 						})
 						.map((item) => {

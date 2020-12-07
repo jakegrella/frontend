@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { useHistory, useParams } from 'react-router-dom';
-import Item from '../Item';
+// import Item from '../Item';
 import Header from './Header';
 
 const EventPage = (props) => {
@@ -13,7 +13,7 @@ const EventPage = (props) => {
 	const [guestList, setGuestList] = useState([]);
 	const [yesList, setYesList] = useState([]);
 	const [noList, setNoList] = useState([]);
-	const [editingItem, setEditingItem] = useState('');
+	// const [editingItem, setEditingItem] = useState('');
 	const [buttonClicked, setButtonClicked] = useState(false);
 
 	const getUserInfo = () => {
@@ -46,6 +46,8 @@ const EventPage = (props) => {
 	useEffect(() => {
 		getUserInfo();
 		fetchEvent(params.id);
+		// this comment will remove warning about empty array
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {}, [yesList, noList]);
@@ -62,25 +64,25 @@ const EventPage = (props) => {
 			});
 	};
 
-	const submitHandler = (e) => {
-		e.preventDefault();
-		console.log(e);
-	};
+	// const submitHandler = (e) => {
+	// 	e.preventDefault();
+	// 	console.log(e);
+	// };
 
-	const radioHandler = (e) => {
-		console.log(e);
-		if (e.target.value === 'yes' && !yesList.includes(userInfo.username)) {
-			let newYesList = yesList;
-			newYesList.push(userInfo.username);
-			setYesList(newYesList);
-		} else if (e.target.value === 'no' && !noList.includes(userInfo.username)) {
-			let newNoList = noList;
-			newNoList.push(userInfo.username);
-			setNoList(newNoList);
-		} else {
-			return null;
-		}
-	};
+	// const radioHandler = (e) => {
+	// 	console.log(e);
+	// 	if (e.target.value === 'yes' && !yesList.includes(userInfo.username)) {
+	// 		let newYesList = yesList;
+	// 		newYesList.push(userInfo.username);
+	// 		setYesList(newYesList);
+	// 	} else if (e.target.value === 'no' && !noList.includes(userInfo.username)) {
+	// 		let newNoList = noList;
+	// 		newNoList.push(userInfo.username);
+	// 		setNoList(newNoList);
+	// 	} else {
+	// 		return null;
+	// 	}
+	// };
 
 	const onChangeHandler = (value, key) => {
 		console.log(itemList);
@@ -248,7 +250,7 @@ const EventPage = (props) => {
 						return <li key={item.id}>{item}</li>;
 					})}
 				</ul>
-				{event.users_id == localStorage.getItem('userID') && (
+				{event.users_id === localStorage.getItem('userID') && (
 					<button
 						onClick={() => {
 							push(`/edit-event/${event.id}`);
@@ -257,7 +259,7 @@ const EventPage = (props) => {
 						Edit
 					</button>
 				)}
-				{event.users_id == localStorage.getItem('userID') && (
+				{event.users_id === localStorage.getItem('userID') && (
 					<button onClick={deleteHandler}>Delete Event</button>
 				)}
 			</div>
@@ -302,47 +304,47 @@ const EventPage = (props) => {
 
 export default EventPage;
 
-{
-	/* <form onSubmit={submitHandler}>
-				<label>
-					Yes
-					<input
-						type='radio'
-						id='yes'
-						name='isGoing'
-						value='yes'
-						onChange={radioHandler}
-					/>
-				</label>
-				<label>
-					No
-					<input
-						type='radio'
-						id='no'
-						name='isGoing'
-						value='no'
-						onChange={radioHandler}
-					/>
-				</label>
-				<button type='submit'>Submit</button>
-			</form>
+// {
+// 	/* <form onSubmit={submitHandler}>
+// 				<label>
+// 					Yes
+// 					<input
+// 						type='radio'
+// 						id='yes'
+// 						name='isGoing'
+// 						value='yes'
+// 						onChange={radioHandler}
+// 					/>
+// 				</label>
+// 				<label>
+// 					No
+// 					<input
+// 						type='radio'
+// 						id='no'
+// 						name='isGoing'
+// 						value='no'
+// 						onChange={radioHandler}
+// 					/>
+// 				</label>
+// 				<button type='submit'>Submit</button>
+// 			</form>
 
-			<div className='column-names'>
-				<div className='yes-column'>
-					<p>Yes</p>
-					<ul>
-						{yesList.map((guest, index) => {
-							return <li key={index}>{guest}</li>;
-						})}
-					</ul>
-				</div>
-				<div>
-					<p>No</p>
-					<ul className='no-column'>
-						{noList.map((guest, index) => {
-							return <li key={index}>{guest}</li>;
-						})}
-					</ul>
-				</div>
-			</div> */
-}
+// 			<div className='column-names'>
+// 				<div className='yes-column'>
+// 					<p>Yes</p>
+// 					<ul>
+// 						{yesList.map((guest, index) => {
+// 							return <li key={index}>{guest}</li>;
+// 						})}
+// 					</ul>
+// 				</div>
+// 				<div>
+// 					<p>No</p>
+// 					<ul className='no-column'>
+// 						{noList.map((guest, index) => {
+// 							return <li key={index}>{guest}</li>;
+// 						})}
+// 					</ul>
+// 				</div>
+// 			</div> */
+// }
