@@ -1,38 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const EventCard = (props) => {
 	const { event } = props;
-	const [showInfo, setShowInfo] = useState(false);
+	const creatorId = event.users_id;
+	const [creatorUsername, setCreatorUsername] = useState('');
 
-	const toggleInfo = () => {
-		setShowInfo(!showInfo);
+	const getCreatorUsername = (creatorId) => {
+		axiosWithAuth()
+			.get(`/users/${creatorId}`)
+			.then((res) => {
+				setCreatorUsername(res.data[0].username);
+			})
+			.catch((err) => {
+				console.log(err.message);
+			});
 	};
 
+	useEffect(() => {
+		getCreatorUsername(creatorId);
+		// this comment will remove warning about empty array
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
-		<div className='event-card'>
-			<div>
-				<h3>{event.event_name}</h3>
-				<h4>
-					{event.dates} @ {event.time}
-				</h4>
-				<p>{event.address}</p>
+		<Link to={`/events/${event.id}`}>
+			<div className='event-card'>
+				<div>
+					<h3>{event.event_name}</h3>
+					<h4>
+						On {event.dates} @ {event.time}
+					</h4>
+					<p>{event.description}</p>
+					<p>(created by {creatorUsername})</p>
+				</div>
 			</div>
-			<div className={!showInfo ? 'event-info' : null}>
-				<p>{event.location}</p>
-				<p>{event.description}</p>
-				<Link to={`/events/${event.id}`}>see people and details &gt;&gt;</Link>
-			</div>
-			<style jsx='true'>{`
-				.event-card {
-					border: 3px solid #201b15;
-					border-radius: 20px;
-					padding: 2rem;
-					margin: 2rem 0;
-				}
-			`}</style>
-		</div>
+		</Link>
 	);
 };
 

@@ -7,7 +7,7 @@ import About from './components/About';
 import Dashboard from './components/Dashboard';
 // import PrivateRoute from './components/PrivateRoute'
 import EventPage from './components/EventPage';
-import TestLogin from './components/TestLogin';
+import Login from './components/Login';
 import SignUp from './components/SignUp';
 import CreateEvent from './components/CreateEvent';
 import JoinEvent from './components/JoinEvent';
@@ -30,7 +30,7 @@ function App() {
 					render={(props) => <EventPage {...props} />}
 				/>
 
-				<Route exact path='/test-log-in' component={TestLogin} />
+				<Route exact path='/test-log-in' component={Login} />
 				<Route exact path='/' component={Landing} />
 
 				<Route exact path='/about' component={About} />

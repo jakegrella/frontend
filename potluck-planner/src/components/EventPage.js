@@ -270,61 +270,8 @@ const EventPage = (props) => {
 			{/* {event.noList.split(', ').map(item => {
                 return <p>{item}</p>
             })} */}
-			<style jsx>{`
-				.event-card {
-					border: 3px solid #201b15;
-					border-radius: 20px;
-					padding: 2rem;
-					margin: 2rem 0;
-				}
-			`}</style>
 		</div>
 	);
 };
 
 export default EventPage;
-
-// {
-// 	/* <form onSubmit={submitHandler}>
-// 				<label>
-// 					Yes
-// 					<input
-// 						type='radio'
-// 						id='yes'
-// 						name='isGoing'
-// 						value='yes'
-// 						onChange={radioHandler}
-// 					/>
-// 				</label>
-// 				<label>
-// 					No
-// 					<input
-// 						type='radio'
-// 						id='no'
-// 						name='isGoing'
-// 						value='no'
-// 						onChange={radioHandler}
-// 					/>
-// 				</label>
-// 				<button type='submit'>Submit</button>
-// 			</form>
-
-// 			<div className='column-names'>
-// 				<div className='yes-column'>
-// 					<p>Yes</p>
-// 					<ul>
-// 						{yesList.map((guest, index) => {
-// 							return <li key={index}>{guest}</li>;
-// 						})}
-// 					</ul>
-// 				</div>
-// 				<div>
-// 					<p>No</p>
-// 					<ul className='no-column'>
-// 						{noList.map((guest, index) => {
-// 							return <li key={index}>{guest}</li>;
-// 						})}
-// 					</ul>
-// 				</div>
-// 			</div> */
-// }

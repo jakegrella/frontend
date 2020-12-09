@@ -6,37 +6,30 @@ import EventCard from './EventCard';
 // components
 import Header from './Header';
 
-// initial user state
-const initialCredentials = {
-	id: '',
-	username: '',
-	password: '',
-	events: [],
-};
-
 const Dashboard = (props) => {
-	const [userInfo, setUserInfo] = useState(initialCredentials);
 	const [events, setEvents] = useState([]);
 	const params = useParams();
 
-	const getUserInfo = () => {
-		axiosWithAuth()
-			.get(`/users/${params.id}/events`)
-			.then((res) => {
-				// console.log(res);
-				setUserInfo(res.data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
+	// const getUserInfo = () => {
+	// 	const { id } = params;
+	// 	console.log('id', id);
+	// 	axiosWithAuth()
+	// 		.get(`/users/${id}/events`)
+	// 		.then((res) => {
+	// 			console.log(res);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
+	// };
 
 	const getEvents = () => {
+		const { id } = params;
 		axiosWithAuth()
-			.get(`/events`)
+			.get(`/users/${id}/events`)
 			.then((res) => {
 				// console.log(res);
-				setEvents(res.data);
+				setEvents(res.data.events);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -44,7 +37,7 @@ const Dashboard = (props) => {
 	};
 
 	useEffect(() => {
-		getUserInfo();
+		// getUserInfo();
 		getEvents();
 		// this comment will remove warning about empty array
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,27 +45,14 @@ const Dashboard = (props) => {
 
 	return (
 		<>
-			<Header userInfo={userInfo} />
+			<Header />
+			{/* <Header userInfo={userInfo} /> */}
 			<div className='dashboard'>
 				<div className='dashboard-column'>
-					<h2>Hosting</h2>
-					{events
-						.filter((event) => {
-							return event.users_id === userInfo.id;
-						})
-						.map((item) => {
-							return <EventCard key={item.id} event={item} />;
-						})}
-				</div>
-				<div className='dashboard-column'>
-					<h2>Invitations</h2>
-					{events
-						.filter((ev) => {
-							return ev.guests.split(', ').includes(userInfo.username);
-						})
-						.map((item) => {
-							return <EventCard key={item.id} event={item} />;
-						})}
+					<h2>Collabs</h2>
+					{events.map((item) => {
+						return <EventCard key={item.id} event={item} />;
+					})}
 				</div>
 			</div>
 		</>
