@@ -87,11 +87,6 @@ const TestLogin = () => {
 				/>
 				<button>login</button>
 			</form>
-			{/* <style jsx>{`
-				form {
-					border: 1px solid red;
-				}
-			`}</style> */}
 		</>
 	);
 };

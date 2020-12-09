@@ -1,7 +1,5 @@
 import React from 'react';
 import Header from './Header';
-import SocialIcons from './SocialIcons';
-import '../styles/About.css';
 
 const About = () => {
 	return (
@@ -23,7 +21,6 @@ const About = () => {
 				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 				commodo consequat.
 			</p>
-			<SocialIcons />
 		</>
 	);
 };

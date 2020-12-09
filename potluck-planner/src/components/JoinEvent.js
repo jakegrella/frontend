@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Header from './Header';
-import '../styles/CreateEvent.css';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 

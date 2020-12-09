@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
@@ -18,29 +18,29 @@ const EditForm = (props) => {
 	const { push } = useHistory();
 	const [event, setEvent] = useState([]);
 	const { id } = useParams();
-	// const [itemList, setItemList] = useState([])
-	// const [guestList, setGuestList] = useState([])
+	const [itemList, setItemList] = useState([]);
+	const [guestList, setGuestList] = useState([]);
 
-	// const fetchEvent = (id) => {
-	// 	axiosWithAuth()
-	// 		.get(`/events/${id}`)
-	// 		.then((res) => {
-	// 			console.log(res);
-	// 			console.log(id);
-	// 			setEvent(res.data[0]);
-	// 			setItemList(res.data[0].items.split(', '));
-	// 			setGuestList(res.data[0].guests.split(', '));
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// };
+	const fetchEvent = (id) => {
+		axiosWithAuth()
+			.get(`/events/${id}`)
+			.then((res) => {
+				console.log(res);
+				console.log(id);
+				setEvent(res.data[0]);
+				setItemList(res.data[0].items.split(', '));
+				setGuestList(res.data[0].guests.split(', '));
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
-	// useEffect(() => {
-	// 	fetchEvent(id);
-	// 	// this comment will remove warning about empty array
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, []);
+	useEffect(() => {
+		fetchEvent(id);
+		// this comment will remove warning about empty array
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const handleChange = (e) => {
 		e.persist();

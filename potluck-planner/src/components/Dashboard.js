@@ -23,7 +23,7 @@ const Dashboard = (props) => {
 		axiosWithAuth()
 			.get(`/users/${params.id}/events`)
 			.then((res) => {
-				console.log(res);
+				// console.log(res);
 				setUserInfo(res.data);
 			})
 			.catch((err) => {
@@ -35,7 +35,7 @@ const Dashboard = (props) => {
 		axiosWithAuth()
 			.get(`/events`)
 			.then((res) => {
-				console.log(res);
+				// console.log(res);
 				setEvents(res.data);
 			})
 			.catch((err) => {
@@ -61,7 +61,7 @@ const Dashboard = (props) => {
 							return event.users_id === userInfo.id;
 						})
 						.map((item) => {
-							return <EventCard key={item.title} event={item} />;
+							return <EventCard key={item.id} event={item} />;
 						})}
 				</div>
 				<div className='dashboard-column'>
@@ -71,7 +71,7 @@ const Dashboard = (props) => {
 							return ev.guests.split(', ').includes(userInfo.username);
 						})
 						.map((item) => {
-							return <EventCard key={item.title} event={item} />;
+							return <EventCard key={item.id} event={item} />;
 						})}
 				</div>
 			</div>

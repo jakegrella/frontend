@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import '../styles/CreateEvent.css';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 // import {useHistory, useParams} from 'react-router-dom'
@@ -36,7 +35,7 @@ const CreateEvent = (props) => {
 
 	useEffect(() => {
 		setUserID(localStorage.getItem('userID'));
-		console.log(userID);
+		// console.log(userID);
 		// this comment will remove warning about empty array
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);

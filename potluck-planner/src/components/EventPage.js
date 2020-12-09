@@ -64,26 +64,6 @@ const EventPage = (props) => {
 			});
 	};
 
-	// const submitHandler = (e) => {
-	// 	e.preventDefault();
-	// 	console.log(e);
-	// };
-
-	// const radioHandler = (e) => {
-	// 	console.log(e);
-	// 	if (e.target.value === 'yes' && !yesList.includes(userInfo.username)) {
-	// 		let newYesList = yesList;
-	// 		newYesList.push(userInfo.username);
-	// 		setYesList(newYesList);
-	// 	} else if (e.target.value === 'no' && !noList.includes(userInfo.username)) {
-	// 		let newNoList = noList;
-	// 		newNoList.push(userInfo.username);
-	// 		setNoList(newNoList);
-	// 	} else {
-	// 		return null;
-	// 	}
-	// };
-
 	const onChangeHandler = (value, key) => {
 		console.log(itemList);
 		const newItems = itemList.map((item, index) => {
